@@ -48,7 +48,7 @@ export const projects: Project[] = [
     technologies: ["React", "Tailwind CSS", "Node.js", "Framer Motion"],
     demoLink: "https://www.shift2stream.com",
     githubLink: "https://github.com/KdogDevs/shift2stream-website",
-    image: "/public/s2s-immage.png"
+    image: "/s2s-immage.png"
   }
 ];
 

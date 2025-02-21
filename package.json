@@ -1,5 +1,5 @@
 {
-  "name": "kagen-portfolio-main",
+  "name": "kagen-portfolio",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
-    "@nodelib/fs.walk": "^3.0.1",
     "framer-motion": "^11.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",

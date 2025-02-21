@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { FC } from 'react';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo, socialLinks } from '../data/content';
 import { 
@@ -49,10 +49,11 @@ export const Hero: FC = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
       },
     },
   };
+  
 
   return (
     <section className="h-[82vh] pt-16 pb-8 px-4 md:px-8 overflow-hidden flex items-center relative">

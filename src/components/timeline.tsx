@@ -1,8 +1,8 @@
 // src/components/timeline.tsx
 import * as React from 'react';
-import type { FC } from 'react';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
-import { Education, Employment } from '../types/main';
+import { Education, Employment } from '../types'; // Changed from '../types/main'
 import { education, employment } from '../data/content';
 import { 
   AcademicCapIcon,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { FC } from 'react';
 import { motion } from 'framer-motion';
-import { Project } from '../types/main';
+import { Project } from '../types';
 import { projects } from '../data/content';
 import { 
   ArrowTopRightOnSquareIcon,
