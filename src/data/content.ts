@@ -112,19 +112,30 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const siteMetadata = {
-  title: "Kagen Jensen - Electrical Engineering Student & AI Solutions Architect",
-  description: "Portfolio of Kagen Jensen, University of Alabama electrical engineering student and Air Force ROTC cadet, showcasing innovative projects in AI, networking, and system architecture.",
+  title: "Kagen Jensen - Electrical Engineering Student, AI Solutions Architect & Developer Portfolio",
+  description: "Official portfolio of Kagen Jensen - University of Alabama electrical engineering student, Air Force ROTC cadet, and AI solutions architect. Showcasing innovative projects in artificial intelligence, network architecture, web development, and system design. Contact Kagen for collaboration opportunities.",
   author: "Kagen Jensen",
   siteUrl: "https://kagen.dev",
   socialImage: "/_PP_6585.jpg",
   keywords: [
-    "Electrical Engineering",
-    "AI Solutions",
+    "Kagen Jensen",
+    "Kagen",
+    "Electrical Engineering Student",
+    "AI Solutions Architect", 
+    "University of Alabama",
+    "Air Force ROTC",
+    "Web Developer",
+    "AI Engineering",
     "Network Architecture",
     "System Design",
     "Web Development",
-    "Air Force ROTC",
-    "University of Alabama",
-    "Technology Innovation"
+    "Technology Innovation",
+    "Full Stack Developer",
+    "Atlanta Georgia",
+    "Software Engineer",
+    "Portfolio",
+    "React Developer",
+    "JavaScript Developer",
+    "Node.js Developer"
   ]
 };
