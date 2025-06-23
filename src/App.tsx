@@ -5,11 +5,13 @@ import { Hero } from './components/hero';
 import { Bio } from './components/bio';
 import { ProjectsSection } from './components/project-card';
 import { EducationSection, WorkSection } from './components/timeline';
+import { SEO } from './components/seo';
 import { socialLinks } from './data/content';
 
 function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden">
+      <SEO />
       <Header />
       
       <main className="flex flex-col min-h-screen">
