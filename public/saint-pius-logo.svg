@@ -1,0 +1,7 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Saint Pius X inspired design -->
+  <rect width="80" height="80" fill="#1E3A8A" rx="8"/>
+  <text x="40" y="35" text-anchor="middle" fill="white" font-family="serif" font-size="20" font-weight="bold">SPX</text>
+  <text x="40" y="55" text-anchor="middle" fill="white" font-family="serif" font-size="8">CATHOLIC</text>
+  <text x="40" y="65" text-anchor="middle" fill="white" font-family="serif" font-size="8">HIGH SCHOOL</text>
+</svg>

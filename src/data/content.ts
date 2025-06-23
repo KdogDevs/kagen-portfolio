@@ -4,8 +4,8 @@ import { GitHubIcon } from '../components/icons/GitHub';
 
 export const personalInfo: PersonalInfo = {
   name: "Kagen Jensen",
-  title: "AI Solutions Architect & Network Specialist",
-  about: "Im a tech enthusiast specializing in AI prompt engineering and networking solutions.",
+  title: "Electrical Engineering Student & AI Solutions Architect",
+  about: "I'm an electrical engineering student at the University of Alabama and Air Force ROTC cadet, specializing in AI prompt engineering and networking solutions.",
   headshot: "/_PP_6585.jpg"
 };
 
@@ -13,11 +13,11 @@ export const bioContent: BioContent = {
   title: "About Me",
   background: {
     title: "Background",
-    description: "I'm a Senior in high school and i enjoy creating websites and programs that make an impact on poeples day to day lives. My journey in tech began with AI prompt engineering and has evolved into full-stack development and system architecture."
+    description: "I recently graduated from Saint Pius X Catholic High School in May 2025 and now attend the University of Alabama, where I'm majoring in electrical engineering and participating in Air Force ROTC. I enjoy creating websites and programs that make an impact on people's day-to-day lives. My journey in tech began with AI prompt engineering and has evolved into full-stack development and system architecture."
   },
   location: {
     title: "Location & Interests",
-    description: "Based in Atlanta, Georgia, I split my time between my hobbie projects like building websites and School. I'm particularly interested in AI applications and network infrastructure."
+    description: "Based in Atlanta, Georgia, I split my time between my studies at the University of Alabama, Air Force ROTC activities, and my hobby projects like building websites and applications. I'm particularly interested in AI applications, network infrastructure, and the intersection of technology with electrical engineering."
   },
   technical: {
     title: "Technical Journey",
@@ -54,9 +54,22 @@ export const projects: Project[] = [
 
 export const education: Education[] = [
   {
+    school: "University of Alabama",
+    degree: "Bachelor of Science in Electrical Engineering",
+    years: "2025 - Present",
+    logo: "/university-of-alabama-logo.svg",
+    achievements: [
+      "Air Force ROTC Cadet",
+      "Electrical Engineering Major",
+      "Technology Innovation Focus",
+      "Leadership Development Program"
+    ]
+  },
+  {
     school: "Saint Pius X Catholic High School",
     degree: "High School Diploma",
     years: "2021 - 2025",
+    logo: "/saint-pius-logo.svg",
     achievements: [
       "Fersatti Formation Coordinator",
       "Head of Broadcasting Department",
@@ -99,16 +112,19 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const siteMetadata = {
-  title: "Kagen Jensen - AI Solutions Architect & Network Specialist",
-  description: "Portfolio of Kagen Jensen, showcasing innovative projects in AI, networking, and system architecture.",
+  title: "Kagen Jensen - Electrical Engineering Student & AI Solutions Architect",
+  description: "Portfolio of Kagen Jensen, University of Alabama electrical engineering student and Air Force ROTC cadet, showcasing innovative projects in AI, networking, and system architecture.",
   author: "Kagen Jensen",
   siteUrl: "https://kagen.dev",
   socialImage: "/_PP_6585.jpg",
   keywords: [
+    "Electrical Engineering",
     "AI Solutions",
     "Network Architecture",
     "System Design",
     "Web Development",
+    "Air Force ROTC",
+    "University of Alabama",
     "Technology Innovation"
   ]
 };

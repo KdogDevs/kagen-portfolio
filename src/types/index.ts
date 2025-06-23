@@ -14,6 +14,7 @@ export interface Education {
   degree: string;
   years: string;
   achievements?: string[];
+  logo?: string;
 }
 
 export interface Employment {

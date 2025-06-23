@@ -85,7 +85,13 @@ export const Timeline: FC<TimelineProps> = ({ items, type }) => {
               bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg 
               ring-4 ring-white dark:ring-gray-900 group"
             >
-              {type === 'education' ? (
+              {type === 'education' && (item as Education).logo ? (
+                <img 
+                  src={(item as Education).logo} 
+                  alt={`${(item as Education).school} logo`}
+                  className="w-8 h-8 rounded-lg group-hover:scale-110 transition-transform object-contain"
+                />
+              ) : type === 'education' ? (
                 <AcademicCapIcon className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
               ) : (
                 <BriefcaseIcon className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
