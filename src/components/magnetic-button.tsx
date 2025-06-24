@@ -32,9 +32,9 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     
-    // Reduced movement range and smoother calculations
-    const deltaX = Math.max(-20, Math.min(20, (e.clientX - centerX) * intensity));
-    const deltaY = Math.max(-20, Math.min(20, (e.clientY - centerY) * intensity));
+    // Very reduced movement range for smoother experience
+    const deltaX = Math.max(-15, Math.min(15, (e.clientX - centerX) * intensity));
+    const deltaY = Math.max(-15, Math.min(15, (e.clientY - centerY) * intensity));
 
     setMousePosition({ x: deltaX, y: deltaY });
   };
@@ -65,9 +65,9 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
       }}
       transition={{
         type: "spring",
-        stiffness: 300, // Reduced from 400
-        damping: 40,    // Increased from 30 for smoother motion
-        mass: 0.8,      // Added mass for more natural feel
+        stiffness: 200, // Further reduced from 300
+        damping: 45,    // Increased from 40 for even smoother motion
+        mass: 1,        // Increased mass for more stability
       }}
     >
       {/* Glow effect */}

@@ -180,7 +180,7 @@ export const EnhancedHero: FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold leading-normal">
               <motion.span
                 className="inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 
                   bg-clip-text text-transparent bg-300% animate-gradient-x"
@@ -243,13 +243,13 @@ export const EnhancedHero: FC = () => {
             </MagneticButton>
           </motion.div>
 
-          {/* Social Links with Reduced Animation Intensity */}
+          {/* Social Links with Minimal Animation */}
           <motion.div 
             variants={itemVariants}
             className="flex gap-6 justify-center lg:justify-start"
           >
             {socialLinks.map((link, index) => (
-              <MagneticButton key={link.platform} intensity={0.15}>
+              <MagneticButton key={link.platform} intensity={0.08}>
                 <motion.a
                   href={link.url}
                   target="_blank"
@@ -261,8 +261,8 @@ export const EnhancedHero: FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -2, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ y: -1, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <link.Component className="w-6 h-6" />
                 </motion.a>
