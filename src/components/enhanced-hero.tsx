@@ -180,7 +180,7 @@ export const EnhancedHero: FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold leading-loose pb-4">
+            <h1 className="text-5xl md:text-7xl font-bold leading-loose py-8">
               <motion.span
                 className="inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 
                   bg-clip-text text-transparent bg-300% animate-gradient-x"
