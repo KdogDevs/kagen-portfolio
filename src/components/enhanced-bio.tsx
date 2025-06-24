@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { bioContent } from '../data/content';
+import { skillIcons } from './icons/skills';
 
 export const EnhancedBio: FC = () => {
   const [ref, inView] = useInView({ 
@@ -224,7 +225,13 @@ export const EnhancedBio: FC = () => {
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
-                          <span className="text-2xl">⚡</span>
+                          {skillIcons[skill] ? (
+                            React.createElement(skillIcons[skill], { 
+                              className: "w-6 h-6 text-blue-600 dark:text-blue-400" 
+                            })
+                          ) : (
+                            <span className="text-2xl">⚡</span>
+                          )}
                         </motion.div>
                         
                         <h4 className="font-semibold text-sm text-gray-800 dark:text-gray-200 

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { education, employment } from '../data/content';
 import { Education, Employment } from '../types';
+import { GraduationIcon } from './icons/GraduationIcon';
+import { BriefcaseIcon } from './icons/BriefcaseIcon';
 
 interface EnhancedTimelineItemProps {
   item: Education | Employment;
@@ -130,10 +132,16 @@ const EnhancedTimelineItem: FC<EnhancedTimelineItemProps> = ({ item, index, isLe
                     }}
                   >
                     <motion.div
-                      className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0"
-                      whileHover={{ scale: 1.5 }}
+                      className="w-4 h-4 text-blue-500 mt-1 flex-shrink-0"
+                      whileHover={{ scale: 1.2, rotate: 15 }}
                       transition={{ type: "spring", stiffness: 400 }}
-                    />
+                    >
+                      {isEducation ? (
+                        <GraduationIcon className="w-full h-full" />
+                      ) : (
+                        <BriefcaseIcon className="w-full h-full" />
+                      )}
+                    </motion.div>
                     <span className="leading-relaxed">{detail}</span>
                   </motion.li>
                 ))}
