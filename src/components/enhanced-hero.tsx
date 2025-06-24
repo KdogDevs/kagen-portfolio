@@ -131,31 +131,31 @@ export const EnhancedHero: FC = () => {
       >
         {/* Text Content */}
         <motion.div className="space-y-8 text-center lg:text-left relative">
-          {/* Floating Tech Icons */}
+          {/* Floating Tech Icons - Reduced size and repositioned */}
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
-            className="absolute -left-16 top-8 text-blue-500/30 dark:text-blue-400/30 hidden lg:block"
+            className="absolute -left-20 top-16 text-blue-500/20 dark:text-blue-400/20 hidden lg:block"
           >
-            <CommandLineIcon className="w-16 h-16" />
+            <CommandLineIcon className="w-8 h-8" />
           </motion.div>
           
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
             transition={{ delay: 1.5 }}
-            className="absolute right-0 top-32 text-purple-500/30 dark:text-purple-400/30 hidden lg:block"
+            className="absolute -right-12 top-24 text-purple-500/20 dark:text-purple-400/20 hidden lg:block"
           >
-            <CodeBracketIcon className="w-18 h-18" />
+            <CodeBracketIcon className="w-10 h-10" />
           </motion.div>
           
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
             transition={{ delay: 3 }}
-            className="absolute -left-8 bottom-16 text-cyan-500/30 dark:text-cyan-400/30 hidden lg:block"
+            className="absolute -left-16 bottom-24 text-cyan-500/20 dark:text-cyan-400/20 hidden lg:block"
           >
-            <CpuChipIcon className="w-14 h-14" />
+            <CpuChipIcon className="w-8 h-8" />
           </motion.div>
 
           {/* Main Content */}
@@ -243,13 +243,13 @@ export const EnhancedHero: FC = () => {
             </MagneticButton>
           </motion.div>
 
-          {/* Social Links with Enhanced Animations */}
+          {/* Social Links with Reduced Animation Intensity */}
           <motion.div 
             variants={itemVariants}
             className="flex gap-6 justify-center lg:justify-start"
           >
             {socialLinks.map((link, index) => (
-              <MagneticButton key={link.platform} intensity={0.4}>
+              <MagneticButton key={link.platform} intensity={0.15}>
                 <motion.a
                   href={link.url}
                   target="_blank"
@@ -261,7 +261,7 @@ export const EnhancedHero: FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -3, scale: 1.1 }}
+                  whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <link.Component className="w-6 h-6" />
