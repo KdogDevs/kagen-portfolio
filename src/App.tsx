@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { Header } from './components/header';
+import { EnhancedHeader } from './components/enhanced-header';
 import { EnhancedHero } from './components/enhanced-hero';
-import { Bio } from './components/bio';
+import { EnhancedBio } from './components/enhanced-bio';
 import { EnhancedProjectsSection } from './components/enhanced-projects-section';
-import { EducationSection, WorkSection } from './components/timeline';
+import { EnhancedEducationSection, EnhancedWorkSection } from './components/enhanced-timeline';
 import { SEO } from './components/seo';
 import { ParticleBackground } from './components/particle-background';
 import { FloatingOrbs } from './components/floating-orbs';
+import { CustomCursor } from './components/custom-cursor';
 import { MagneticButton } from './components/magnetic-button';
 import { socialLinks } from './data/content';
 
@@ -16,11 +17,14 @@ function App() {
     <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative">
       <SEO />
       
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* Background Effects */}
       <ParticleBackground />
       <FloatingOrbs count={15} />
       
-      <Header />
+      <EnhancedHeader />
       
       <main className="flex flex-col min-h-screen relative z-10">
         {/* Enhanced Hero Section */}
@@ -38,7 +42,7 @@ function App() {
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
           
           <div className="relative bg-gradient-to-b from-gray-50/50 to-white/50 dark:from-gray-800/50 dark:to-gray-900/50 backdrop-blur-sm">
-            <Bio />
+            <EnhancedBio />
             
             {/* Floating elements for visual interest */}
             <motion.div
@@ -79,8 +83,8 @@ function App() {
           <div className="relative py-32">
             <div className="container mx-auto px-4">
               <div className="max-w-7xl mx-auto space-y-32">
-                <EducationSection />
-                <WorkSection />
+                <EnhancedEducationSection />
+                <EnhancedWorkSection />
               </div>
             </div>
           </div>
