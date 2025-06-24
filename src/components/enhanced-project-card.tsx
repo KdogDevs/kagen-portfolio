@@ -5,6 +5,7 @@ import { ArrowTopRightOnSquareIcon, CodeBracketIcon } from '@heroicons/react/24/
 import { Project } from '../types';
 import { MagneticButton } from './magnetic-button';
 import { cn } from '../lib/utils';
+import { getTechIcon } from './icons/tech';
 
 interface EnhancedProjectCardProps {
   project: Project;
@@ -129,26 +130,30 @@ export const EnhancedProjectCard: FC<EnhancedProjectCardProps> = ({ project, ind
                 animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
               >
-                {project.technologies.map((tech, techIndex) => (
-                  <motion.span
-                    key={tech}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ 
-                      scale: isHovered ? 1 : 0, 
-                      opacity: isHovered ? 1 : 0 
-                    }}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: techIndex * 0.1 + 0.2,
-                      type: "spring",
-                      stiffness: 200 
-                    }}
-                    className="px-3 py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm
-                      border border-white/10 font-medium"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
+                {project.technologies.map((tech, techIndex) => {
+                  const TechIcon = getTechIcon(tech);
+                  return (
+                    <motion.span
+                      key={tech}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ 
+                        scale: isHovered ? 1 : 0, 
+                        opacity: isHovered ? 1 : 0 
+                      }}
+                      transition={{ 
+                        duration: 0.3, 
+                        delay: techIndex * 0.1 + 0.2,
+                        type: "spring",
+                        stiffness: 200 
+                      }}
+                      className="px-3 py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm
+                        border border-white/10 font-medium flex items-center gap-1.5"
+                    >
+                      <TechIcon className="w-3 h-3" />
+                      {tech}
+                    </motion.span>
+                  );
+                })}
               </motion.div>
             </motion.div>
           </div>
