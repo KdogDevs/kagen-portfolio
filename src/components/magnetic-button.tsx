@@ -22,7 +22,6 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
   rel,
 }) => {
   const buttonRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -32,19 +31,14 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     
-    // Very reduced movement range for smoother experience
-    const deltaX = Math.max(-15, Math.min(15, (e.clientX - centerX) * intensity));
-    const deltaY = Math.max(-15, Math.min(15, (e.clientY - centerY) * intensity));
+    // Very minimal movement for social buttons to avoid glitches
+    const deltaX = Math.max(-8, Math.min(8, (e.clientX - centerX) * intensity));
+    const deltaY = Math.max(-8, Math.min(8, (e.clientY - centerY) * intensity));
 
     setMousePosition({ x: deltaX, y: deltaY });
   };
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
   const handleMouseLeave = () => {
-    setIsHovered(false);
     setMousePosition({ x: 0, y: 0 });
   };
 
@@ -52,11 +46,10 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
     <motion.div
       ref={buttonRef}
       className={cn(
-        "relative inline-block cursor-pointer group",
+        "relative inline-block cursor-pointer magnetic-button gpu-accelerated",
         className
       )}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       animate={{
@@ -65,46 +58,21 @@ export const MagneticButton: FC<MagneticButtonProps> = ({
       }}
       transition={{
         type: "spring",
-        stiffness: 200, // Further reduced from 300
-        damping: 45,    // Increased from 40 for even smoother motion
-        mass: 1,        // Increased mass for more stability
+        stiffness: 120,
+        damping: 30,
+        mass: 0.8,
+        restSpeed: 0.01,
+        restDelta: 0.01,
+      }}
+      style={{
+        willChange: 'transform',
+        transformStyle: 'preserve-3d',
       }}
     >
-      {/* Glow effect */}
-      <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 blur-xl"
-        animate={{
-          opacity: isHovered ? 0.3 : 0,
-          scale: isHovered ? 1.2 : 1,
-        }}
-        transition={{ duration: 0.3 }}
-      />
-      
-      {/* Button content */}
-      <motion.div
-        className="relative z-10"
-        animate={{
-          scale: isHovered ? 1.05 : 1,
-        }}
-        transition={{ duration: 0.2 }}
-      >
+      {/* Simplified content without glitch-causing effects */}
+      <div className="relative z-10 will-change-auto">
         {children}
-      </motion.div>
-      
-      {/* Ripple effect */}
-      <motion.div
-        className="absolute inset-0 rounded-full border-2 border-blue-500/30"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: isHovered ? [1, 1.5] : 0,
-          opacity: isHovered ? [0.5, 0] : 0,
-        }}
-        transition={{
-          duration: 1,
-          repeat: isHovered ? Infinity : 0,
-          ease: "easeOut",
-        }}
-      />
+      </div>
     </motion.div>
   );
 

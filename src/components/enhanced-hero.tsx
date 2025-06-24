@@ -86,7 +86,7 @@ export const EnhancedHero: FC = () => {
   return (
     <section 
       ref={ref}
-      className="min-h-screen pt-20 pb-8 px-4 md:px-8 overflow-hidden flex items-center relative"
+      className="min-h-screen pt-20 pb-8 px-4 md:px-8 overflow-hidden flex items-center relative gpu-accelerated"
     >
       {/* Animated mesh gradient background */}
       <motion.div
@@ -131,31 +131,31 @@ export const EnhancedHero: FC = () => {
       >
         {/* Text Content */}
         <motion.div className="space-y-8 text-center lg:text-left relative">
-          {/* Floating Tech Icons - Reduced size and repositioned */}
+          {/* Floating Tech Icons - Further reduced and repositioned */}
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
-            className="absolute -left-20 top-16 text-blue-500/20 dark:text-blue-400/20 hidden lg:block"
+            className="absolute -left-32 top-16 text-blue-500/10 dark:text-blue-400/10 hidden lg:block"
           >
-            <CommandLineIcon className="w-8 h-8" />
+            <CommandLineIcon className="w-6 h-6" />
           </motion.div>
           
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
             transition={{ delay: 1.5 }}
-            className="absolute -right-12 top-24 text-purple-500/20 dark:text-purple-400/20 hidden lg:block"
+            className="absolute -right-24 top-32 text-purple-500/10 dark:text-purple-400/10 hidden lg:block"
           >
-            <CodeBracketIcon className="w-10 h-10" />
+            <CodeBracketIcon className="w-6 h-6" />
           </motion.div>
           
           <motion.div
             variants={floatingIconsVariants}
             animate="animate"
             transition={{ delay: 3 }}
-            className="absolute -left-16 bottom-24 text-cyan-500/20 dark:text-cyan-400/20 hidden lg:block"
+            className="absolute -left-28 bottom-32 text-cyan-500/10 dark:text-cyan-400/10 hidden lg:block"
           >
-            <CpuChipIcon className="w-8 h-8" />
+            <CpuChipIcon className="w-6 h-6" />
           </motion.div>
 
           {/* Main Content */}
@@ -180,7 +180,7 @@ export const EnhancedHero: FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold leading-normal">
+            <h1 className="text-5xl md:text-7xl font-bold leading-relaxed pb-2">
               <motion.span
                 className="inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 
                   bg-clip-text text-transparent bg-300% animate-gradient-x"
@@ -211,11 +211,11 @@ export const EnhancedHero: FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
-            <MagneticButton className="group">
+            <MagneticButton className="group" intensity={0.1}>
               <motion.button
                 className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
                   rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300
-                  flex items-center gap-2"
+                  flex items-center gap-2 gpu-accelerated will-change-transform"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -229,12 +229,12 @@ export const EnhancedHero: FC = () => {
               </motion.button>
             </MagneticButton>
             
-            <MagneticButton>
+            <MagneticButton intensity={0.1}>
               <motion.button
                 className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 
                   dark:text-gray-300 rounded-xl font-semibold hover:border-blue-500 
                   dark:hover:border-blue-400 transition-all duration-300 backdrop-blur-sm
-                  bg-white/10 dark:bg-gray-900/10"
+                  bg-white/10 dark:bg-gray-900/10 gpu-accelerated will-change-transform"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -249,7 +249,7 @@ export const EnhancedHero: FC = () => {
             className="flex gap-6 justify-center lg:justify-start"
           >
             {socialLinks.map((link, index) => (
-              <MagneticButton key={link.platform} intensity={0.08}>
+              <MagneticButton key={link.platform} intensity={0.05}>
                 <motion.a
                   href={link.url}
                   target="_blank"
@@ -257,7 +257,8 @@ export const EnhancedHero: FC = () => {
                   className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400
                     transform transition-all duration-300 p-3 rounded-xl
                     hover:bg-blue-50 dark:hover:bg-blue-900/20 backdrop-blur-sm
-                    border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                    border border-transparent hover:border-blue-200 dark:hover:border-blue-800
+                    gpu-accelerated will-change-transform"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + index * 0.1, duration: 0.5 }}

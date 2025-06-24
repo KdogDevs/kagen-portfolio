@@ -23,6 +23,8 @@ module.exports = {
         'glow': 'glow 2s ease-in-out infinite alternate',
         'shimmer': 'shimmer 2s linear infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fade-in 0.6s ease-out forwards',
+        'slide-up': 'slide-up 0.8s ease-out forwards',
       },
       keyframes: {
         'gradient-x': {
@@ -36,16 +38,58 @@ module.exports = {
           },
         },
         'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '0%, 100%': { 
+            transform: 'translate3d(0, 0px, 0)',
+            'will-change': 'transform'
+          },
+          '50%': { 
+            transform: 'translate3d(0, -20px, 0)',
+            'will-change': 'transform'
+          },
         },
         'glow': {
-          'from': { 'box-shadow': '0 0 20px #3b82f6' },
-          'to': { 'box-shadow': '0 0 30px #8b5cf6, 0 0 40px #06b6d4' },
+          'from': { 
+            'box-shadow': '0 0 20px #3b82f6',
+            'will-change': 'box-shadow'
+          },
+          'to': { 
+            'box-shadow': '0 0 30px #8b5cf6, 0 0 40px #06b6d4',
+            'will-change': 'box-shadow'
+          },
         },
         'shimmer': {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
+          '0%': { 
+            transform: 'translate3d(-100%, 0, 0)',
+            'will-change': 'transform'
+          },
+          '100%': { 
+            transform: 'translate3d(100%, 0, 0)',
+            'will-change': 'transform'
+          },
+        },
+        'fade-in': {
+          '0%': { 
+            opacity: '0',
+            transform: 'translate3d(0, 10px, 0)',
+            'will-change': 'opacity, transform'
+          },
+          '100%': { 
+            opacity: '1',
+            transform: 'translate3d(0, 0, 0)',
+            'will-change': 'auto'
+          },
+        },
+        'slide-up': {
+          '0%': { 
+            opacity: '0',
+            transform: 'translate3d(0, 30px, 0)',
+            'will-change': 'opacity, transform'
+          },
+          '100%': { 
+            opacity: '1',
+            transform: 'translate3d(0, 0, 0)',
+            'will-change': 'auto'
+          },
         },
       },
       backgroundSize: {
