@@ -42,7 +42,6 @@ export const SEO: React.FC<SEOProps> = ({
       "Network Architecture", 
       "System Design",
       "Web Development",
-      "Air Force ROTC",
       "Technology Innovation",
       "React",
       "JavaScript",
@@ -59,10 +58,6 @@ export const SEO: React.FC<SEOProps> = ({
       {
         "@type": "Organization",
         "name": "University of Alabama"
-      },
-      {
-        "@type": "Organization",
-        "name": "Air Force ROTC"
       }
     ],
     "worksFor": {

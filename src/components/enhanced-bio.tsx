@@ -220,11 +220,11 @@ export const EnhancedBio: FC = () => {
                       <div className="relative">
                         <motion.div
                           className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 
-                            flex items-center justify-center"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
+                            flex items-center justify-center border border-blue-500/20 dark:border-blue-400/20"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.3 }}
                         >
-                          <span className="text-2xl">⚡</span>
+                          <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                         </motion.div>
                         
                         <h4 className="font-semibold text-sm text-gray-800 dark:text-gray-200 

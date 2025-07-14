@@ -200,10 +200,9 @@ const EnhancedTimelineItem: FC<EnhancedTimelineItemProps> = ({ item, index, isLe
 interface EnhancedSectionProps {
   title: string;
   items: (Education | Employment)[];
-  icon: string;
 }
 
-const EnhancedSection: FC<EnhancedSectionProps> = ({ title, items, icon }) => {
+const EnhancedSection: FC<EnhancedSectionProps> = ({ title, items }) => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -231,7 +230,7 @@ const EnhancedSection: FC<EnhancedSectionProps> = ({ title, items, icon }) => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className="text-2xl">{icon}</span>
+          <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
           <h2 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               {title}
@@ -256,9 +255,9 @@ const EnhancedSection: FC<EnhancedSectionProps> = ({ title, items, icon }) => {
 };
 
 export const EnhancedEducationSection: FC = () => {
-  return <EnhancedSection title="Education" items={education} icon="🎓" />;
+  return <EnhancedSection title="Education" items={education} />;
 };
 
 export const EnhancedWorkSection: FC = () => {
-  return <EnhancedSection title="Experience" items={employment} icon="💼" />;
+  return <EnhancedSection title="Experience" items={employment} />;
 };
