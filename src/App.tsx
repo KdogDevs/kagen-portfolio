@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { EnhancedHeader } from './components/enhanced-header';
 import { EnhancedHero } from './components/enhanced-hero';
 import { EnhancedBio } from './components/enhanced-bio';
@@ -12,31 +12,50 @@ import { CustomCursor } from './components/custom-cursor';
 import { MagneticButton } from './components/magnetic-button';
 import { socialLinks } from './data/content';
 
+// Optimized motion configurations
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1
+    }
+  }
+};
+
 function App() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative">
+    <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative smooth-scroll">
       <SEO />
       
-      {/* Custom Cursor */}
-      <CustomCursor />
+      {/* Custom Cursor - Only on desktop */}
+      {!shouldReduceMotion && <CustomCursor />}
       
-      {/* Background Effects */}
+      {/* Background Effects - Reduced on low-power devices */}
       <ParticleBackground />
-      <FloatingOrbs count={15} />
+      <FloatingOrbs count={shouldReduceMotion ? 5 : 12} />
       
       <EnhancedHeader />
       
-      <main className="flex flex-col min-h-screen relative z-10">
+      <main className="flex flex-col min-h-screen relative z-10 container-optimized">
         {/* Enhanced Hero Section */}
         <EnhancedHero />
 
         {/* Bio Section with Enhanced Styling */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative"
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
+          className="relative will-change-transform"
         >
           {/* Gradient separator */}
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
@@ -44,39 +63,41 @@ function App() {
           <div className="relative bg-gradient-to-b from-gray-50/50 to-white/50 dark:from-gray-800/50 dark:to-gray-900/50 backdrop-blur-sm">
             <EnhancedBio />
             
-            {/* Floating elements for visual interest */}
-            <motion.div
-              className="absolute top-20 right-10 w-20 h-20 bg-blue-500/5 rounded-full blur-xl"
-              animate={{
-                y: [0, -20, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+            {/* Simplified floating element */}
+            {!shouldReduceMotion && (
+              <motion.div
+                className="absolute top-20 right-10 w-20 h-20 bg-blue-500/5 rounded-full blur-xl gpu-accelerated"
+                animate={{
+                  y: [0, -15, 0],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            )}
           </div>
         </motion.div>
 
         {/* Enhanced Projects Section */}
         <EnhancedProjectsSection />
 
-        {/* Experience & Education Sections with Enhanced Styling */}
+        {/* Experience & Education Sections */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="w-full relative"
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
+          className="w-full relative will-change-transform"
         >
-          {/* Background with subtle pattern */}
+          {/* Optimized background pattern */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800" />
-          <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
               backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0)',
-              backgroundSize: '20px 20px'
+              backgroundSize: '24px 24px'
             }} />
           </div>
           
@@ -92,35 +113,37 @@ function App() {
 
         {/* Enhanced Contact Section */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
           id="contact"
-          className="w-full py-32 relative overflow-hidden"
+          className="w-full py-32 relative overflow-hidden will-change-transform"
         >
           {/* Background effects */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-cyan-900/10" />
           
-          <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0.1, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
+          {!shouldReduceMotion && (
+            <motion.div
+              className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/8 rounded-full blur-3xl gpu-accelerated"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.2, 0.08, 0.2],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          )}
           
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center space-y-12">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                variants={fadeInVariants}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -135,15 +158,7 @@ function App() {
 
               <motion.div 
                 className="flex flex-wrap gap-8 justify-center"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
+                variants={staggerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -151,10 +166,8 @@ function App() {
                 {socialLinks.map((link) => (
                   <motion.div
                     key={link.platform}
-                    variants={{
-                      hidden: { opacity: 0, y: 20, scale: 0.9 },
-                      visible: { opacity: 1, y: 0, scale: 1 }
-                    }}
+                    variants={fadeInVariants}
+                    className="will-change-transform"
                   >
                     <MagneticButton
                       href={link.url}
@@ -165,7 +178,7 @@ function App() {
                         bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg
                         border border-white/20 dark:border-gray-700/20
                         shadow-lg hover:shadow-xl transition-all duration-300
-                        hover:bg-white/80 dark:hover:bg-gray-800/80">
+                        hover:bg-white/80 dark:hover:bg-gray-800/80 magnetic-button">
                         
                         <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10
                           group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-300">
@@ -190,16 +203,17 @@ function App() {
 
               {/* Call to action */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                variants={fadeInVariants}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                className="will-change-transform"
               >
                 <MagneticButton>
                   <button className="px-12 py-6 text-lg font-semibold text-white
                     bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl
                     shadow-lg hover:shadow-xl transition-all duration-300
-                    hover:from-blue-700 hover:to-purple-700">
+                    hover:from-blue-700 hover:to-purple-700 magnetic-button">
                     Start a Conversation
                   </button>
                 </MagneticButton>
@@ -215,9 +229,9 @@ function App() {
             <div className="text-center">
               <motion.p 
                 className="text-gray-600 dark:text-gray-400"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
+                variants={fadeInVariants}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
               >
                 © {new Date().getFullYear()} Kagen Jensen. Crafted with passion and precision.

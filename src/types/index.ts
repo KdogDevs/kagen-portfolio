@@ -39,6 +39,7 @@ export interface PersonalInfo {
   title: string;
   about: string;
   headshot: string;
+  extraImages?: string[];
 }
 
 // New Bio Content Interface

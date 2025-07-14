@@ -319,27 +319,60 @@ export const EnhancedHero: FC = () => {
               transition={{ duration: 0.4 }}
             />
 
-            {/* Floating particles around image */}
-            {Array.from({ length: 12 }, (_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-blue-400 rounded-full"
-                style={{
-                  top: `${20 + (i * 60) % 80}%`,
-                  left: `${10 + (i * 70) % 90}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 3 + i * 0.5,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                }}
-              />
-            ))}
+          {/* Floating particles around image */}
+          {Array.from({ length: 8 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-400 rounded-full"
+              style={{
+                top: `${20 + (i * 60) % 80}%`,
+                left: `${10 + (i * 70) % 90}%`,
+              }}
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.2, 0.6, 0.2],
+                scale: [1, 1.3, 1],
+              }}
+              transition={{
+                duration: 4 + i * 0.3,
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          ))}
+
+          {/* Extra Images Gallery */}
+          {personalInfo.extraImages && (
+            <div className="absolute -bottom-6 -right-6 flex gap-2">
+              {personalInfo.extraImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2 + index * 0.3, duration: 0.6 }}
+                >
+                  <motion.img
+                    src={image}
+                    alt={`${personalInfo.name} - Photo ${index + 2}`}
+                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-xl shadow-lg 
+                      border-2 border-white/50 dark:border-gray-700/50 optimized-image"
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotate: index % 2 === 0 ? 5 : -5,
+                      zIndex: 10
+                    }}
+                    transition={{ duration: 0.3 }}
+                    loading="lazy"
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-xl 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
           </div>
 
           {/* Enhanced ambient glow effects */}

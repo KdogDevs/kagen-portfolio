@@ -24,6 +24,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Enhanced scrolling performance */
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  /* Prevent layout shifts */
+  contain: layout style paint;
 }
 
 .container {
@@ -50,6 +55,9 @@ body {
 /* Performance optimizations for animations */
 .will-change-transform {
   will-change: transform;
+  /* Force hardware acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .will-change-auto {
@@ -70,6 +78,21 @@ body {
   -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
+  /* Ensure smooth compositing */
+  contain: layout style paint;
+}
+
+/* Optimized scrolling */
+html {
+  scroll-behavior: smooth;
+  /* Enable hardware acceleration for scroll */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize container performance */
+.container-optimized {
+  contain: layout style paint;
+  will-change: contents;
 }
 
 /* Custom utilities */
@@ -97,6 +120,21 @@ body {
   background-size: 300% 300%;
   animation: gradient-x 3s ease infinite;
   will-change: background-position;
+  /* Force GPU layer */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Glass morphism effect - Optimized for Chrome/Firefox */
@@ -118,6 +156,9 @@ body {
 .shimmer {
   position: relative;
   overflow: hidden;
+  /* Force compositing layer */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .shimmer::before {
@@ -139,6 +180,15 @@ body {
   transform: translateZ(0);
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Smooth focus outline */
 *:focus {
   outline: 2px solid #3b82f6;
@@ -151,6 +201,22 @@ body {
   will-change: transform;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  /* Optimize for interactions */
+  contain: layout style;
+}
+
+/* Optimized image loading */
+.optimized-image {
+  will-change: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 200px;
+}
+
+/* Smooth scroll improvements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* Chrome/Firefox specific optimizations */

@@ -6,7 +6,11 @@ export const personalInfo: PersonalInfo = {
   name: "Kagen Jensen",
   title: "Electrical Engineering Student & AI Solutions Architect",
   about: "I'm an electrical engineering student at the University of Alabama, specializing in AI prompt engineering and networking solutions.",
-  headshot: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/f64d6616-b729-43c5-8192-f12a4fdc6800/public"
+  headshot: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-1/public",
+  extraImages: [
+    "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-2/public",
+    "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-3/public"
+  ]
 };
 
 export const bioContent: BioContent = {
@@ -40,7 +44,7 @@ export const projects: Project[] = [
     technologies: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
     demoLink: "https://schedulespx.com",
     githubLink: "https://github.com/KdogDevs/schedule-spx",
-    image: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/57e8080a-1d33-4720-e503-585d9fac9a00/public"
+    image: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/57e8080a-1d33-4720-e503-585d9fac9a00/public"
   },
   {
     title: "Shift 2 Stream",
@@ -48,7 +52,7 @@ export const projects: Project[] = [
     technologies: ["React", "Tailwind CSS", "Node.js", "Framer Motion"],
     demoLink: "https://www.shift2stream.com",
     githubLink: "https://github.com/KdogDevs/shift2stream-website",
-    image: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/a79a5386-0dc9-4ab6-a106-cf881bffae00/public"
+    image: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/a79a5386-0dc9-4ab6-a106-cf881bffae00/public"
   }
 ];
 
@@ -57,7 +61,7 @@ export const education: Education[] = [
     school: "University of Alabama",
     degree: "Bachelor of Science in Electrical Engineering",
     years: "2025 - Present",
-    logo: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/b322266a-9c3a-42b4-e29a-6797bb0cd400/public",
+    logo: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/b322266a-9c3a-42b4-e29a-6797bb0cd400/public",
     achievements: [
       "Electrical Engineering Major",
       "Technology Innovation Focus",
@@ -69,7 +73,7 @@ export const education: Education[] = [
     school: "Saint Pius X Catholic High School",
     degree: "High School Diploma",
     years: "2021 - 2025",
-    logo: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/aa1b392b-5480-43dd-a2c0-3c5e1eb1af00/public",
+    logo: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/aa1b392b-5480-43dd-a2c0-3c5e1eb1af00/public",
     achievements: [
       "Fersatti Formation Coordinator",
       "Head of Broadcasting Department",
@@ -116,7 +120,7 @@ export const siteMetadata = {
   description: "Official portfolio of Kagen Jensen - University of Alabama electrical engineering student and AI solutions architect. Showcasing innovative projects in artificial intelligence, network architecture, web development, and system design. Contact Kagen for collaboration opportunities.",
   author: "Kagen Jensen",
   siteUrl: "https://kagen.dev",
-  socialImage: "https://imagedelivery.net/9sek8SHqCpmnP2I3Qb1c4Q/f64d6616-b729-43c5-8192-f12a4fdc6800/public",
+  socialImage: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-1/public",
   keywords: [
     "Kagen Jensen",
     "Kagen",
