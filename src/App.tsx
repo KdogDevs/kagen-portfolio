@@ -11,6 +11,7 @@ import { FloatingOrbs } from './components/floating-orbs';
 import { CustomCursor } from './components/custom-cursor';
 import { MagneticButton } from './components/magnetic-button';
 import { socialLinks } from './data/content';
+import { perfUtils } from './utils/performance';
 
 // Optimized motion configurations
 const fadeInVariants = {
@@ -31,17 +32,18 @@ const staggerVariants = {
 
 function App() {
   const shouldReduceMotion = useReducedMotion();
+  const isLowPowerDevice = perfUtils.isLowPowerDevice();
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative smooth-scroll">
       <SEO />
       
-      {/* Custom Cursor - Only on desktop */}
-      {!shouldReduceMotion && <CustomCursor />}
+      {/* Custom Cursor - Only on desktop and high-power devices */}
+      {!shouldReduceMotion && !isLowPowerDevice && <CustomCursor />}
       
       {/* Background Effects - Reduced on low-power devices */}
       <ParticleBackground />
-      <FloatingOrbs count={shouldReduceMotion ? 5 : 12} />
+      <FloatingOrbs count={isLowPowerDevice ? 3 : shouldReduceMotion ? 5 : 12} />
       
       <EnhancedHeader />
       
@@ -64,7 +66,7 @@ function App() {
             <EnhancedBio />
             
             {/* Simplified floating element */}
-            {!shouldReduceMotion && (
+            {!shouldReduceMotion && !isLowPowerDevice && (
               <motion.div
                 className="absolute top-20 right-10 w-20 h-20 bg-blue-500/5 rounded-full blur-xl gpu-accelerated"
                 animate={{
@@ -123,7 +125,7 @@ function App() {
           {/* Background effects */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-cyan-900/10" />
           
-          {!shouldReduceMotion && (
+          {!shouldReduceMotion && !isLowPowerDevice && (
             <motion.div
               className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/8 rounded-full blur-3xl gpu-accelerated"
               animate={{
