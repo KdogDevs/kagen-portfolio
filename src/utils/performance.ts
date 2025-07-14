@@ -23,8 +23,11 @@ export const perfUtils = {
     const memory = perfUtils.getDeviceMemory();
     const cores = navigator.hardwareConcurrency || 2;
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isTouch = 'ontouchstart' in window;
+    const screenWidth = window.screen.width;
     
-    return memory <= 2 || cores <= 2 || isMobile;
+    // More aggressive detection for mobile and low-end devices
+    return memory <= 4 || cores <= 4 || isMobile || isTouch || screenWidth <= 768;
   },
 
   // Optimized requestAnimationFrame for smooth scrolling
@@ -52,17 +55,28 @@ export const perfUtils = {
     // Enable CSS containment for better performance
     document.documentElement.style.contain = 'layout style paint';
     
-    // Optimize scroll behavior
+    // More aggressive optimizations for mobile/low-power devices
     if (perfUtils.isLowPowerDevice()) {
       document.documentElement.classList.add('low-power-device');
+      document.body.classList.add('mobile-performance');
+      
+      // Disable expensive CSS features
+      document.documentElement.style.setProperty('--blur-enabled', '0');
+      document.documentElement.style.setProperty('--backdrop-filter', 'none');
     }
     
     // Set up passive event listeners for better scroll performance
     const passiveOptions = { passive: true };
     
-    // Override smooth scroll for low-power devices
+    // Override smooth scroll for low-power devices or reduced motion preference
     if (perfUtils.isLowPowerDevice() || perfUtils.prefersReducedMotion()) {
       document.documentElement.style.scrollBehavior = 'auto';
+    }
+    
+    // Force hardware acceleration for supported devices
+    if (perfUtils.hasHardwareAcceleration() && !perfUtils.isLowPowerDevice()) {
+      document.body.style.transform = 'translateZ(0)';
+      document.body.style.backfaceVisibility = 'hidden';
     }
   }
 };

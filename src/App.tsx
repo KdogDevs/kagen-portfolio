@@ -35,7 +35,7 @@ function App() {
   const isLowPowerDevice = perfUtils.isLowPowerDevice();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative smooth-scroll">
+    <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative smooth-scroll mobile-performance">
       <SEO />
       
       {/* Custom Cursor - Only on desktop and high-power devices */}
@@ -103,9 +103,9 @@ function App() {
             }} />
           </div>
           
-          <div className="relative py-16 md:py-32">
+          <div className="relative mobile-optimized-spacing">
             <div className="container mx-auto px-4">
-              <div className="max-w-7xl mx-auto space-y-16 md:space-y-32">
+              <div className="max-w-7xl mx-auto mobile-optimized-gap flex flex-col">
                 <EnhancedEducationSection />
                 <EnhancedWorkSection />
               </div>
@@ -120,7 +120,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-10%" }}
           id="contact"
-          className="w-full py-16 md:py-32 relative overflow-hidden will-change-transform"
+          className="w-full mobile-optimized-spacing relative overflow-hidden will-change-transform"
         >
           {/* Background effects */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-cyan-900/10" />

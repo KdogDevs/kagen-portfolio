@@ -50,7 +50,7 @@ export const EnhancedProjectsSection: FC = () => {
     <section 
       ref={ref}
       id="projects"
-      className="w-full py-16 md:py-32 relative overflow-hidden"
+      className="w-full mobile-optimized-spacing relative overflow-hidden"
     >
       {/* Background effects */}
       <div className="absolute inset-0 -z-10">
@@ -87,7 +87,7 @@ export const EnhancedProjectsSection: FC = () => {
           variants={titleVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-center mb-8 md:mb-16 max-w-3xl"
+          className="text-center mb-4 md:mb-8 max-w-3xl"
         >
           <motion.h2 
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"

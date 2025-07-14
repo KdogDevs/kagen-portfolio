@@ -50,7 +50,7 @@ export const EnhancedBio: FC = () => {
   return (
     <section 
       ref={ref}
-      className="py-16 md:py-32 px-4 md:px-8 relative overflow-hidden"
+      className="mobile-optimized-spacing px-4 md:px-8 relative overflow-hidden"
     >
       {/* Background effects */}
       <motion.div
@@ -70,7 +70,7 @@ export const EnhancedBio: FC = () => {
         {/* Section Header */}
         <motion.div 
           variants={itemVariants}
-          className="text-center mb-8 md:mb-16"
+          className="text-center mb-4 md:mb-8"
         >
           <motion.h2 
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"
@@ -92,9 +92,9 @@ export const EnhancedBio: FC = () => {
         </motion.div>
 
         {/* Bio Content Grid - Optimized for mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-16 mb-8 md:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-16 mb-4 md:mb-8">
           {/* Content Sections */}
-          <div className="space-y-6 md:space-y-12">
+          <div className="space-y-4 md:space-y-8">
             {[bioContent.background, bioContent.location, bioContent.technical].map((section, index) => (
               <motion.div
                 key={section.title}

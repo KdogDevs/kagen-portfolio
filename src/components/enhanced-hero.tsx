@@ -320,8 +320,8 @@ export const EnhancedHero: FC = () => {
               onError={(e) => {
                 // Fallback to a simpler URL format if the current one fails
                 const target = e.target as HTMLImageElement;
-                if (target.src.includes('w=')) {
-                  target.src = "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-1/public";
+                if (!target.src.includes('/public')) {
+                  target.src = "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/f64d6616-b729-43c5-8192-f12a4fdc6800/public";
                 }
               }}
             />
@@ -374,8 +374,9 @@ export const EnhancedHero: FC = () => {
                     onError={(e) => {
                       // Fallback for extra images
                       const target = e.target as HTMLImageElement;
-                      if (target.src.includes('w=')) {
-                        target.src = `https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/kagen-photo-${index + 2}/public`;
+                      if (!target.src.includes('/public')) {
+                        const imageId = index === 0 ? 'f64d6616-b729-43c5-8192-f12a4fdc6800' : '13f2dbbb-cd34-40ac-593d-11cf2a4b6900';
+                        target.src = `https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/${imageId}/public`;
                       }
                     }}
                   />

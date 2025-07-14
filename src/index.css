@@ -16,6 +16,7 @@
   }
 }
 
+/* Enhanced performance optimizations */
 body {
   @apply bg-white text-black dark:bg-gray-900 dark:text-white;
   overflow-x: hidden;
@@ -29,6 +30,49 @@ body {
   overscroll-behavior: none;
   /* Prevent layout shifts */
   contain: layout style paint;
+  /* Force hardware acceleration for entire page */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Better scroll performance */
+  -webkit-overflow-scrolling: touch;
+  /* Reduce paint operations */
+  backface-visibility: hidden;
+}
+
+/* Mobile-first optimized spacing */
+.mobile-optimized-spacing {
+  padding-top: 2rem; /* 8 on mobile */
+  padding-bottom: 2rem; /* 8 on mobile */
+}
+
+@media (min-width: 768px) {
+  .mobile-optimized-spacing {
+    padding-top: 4rem; /* 16 on tablet+ */
+    padding-bottom: 4rem; /* 16 on tablet+ */
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-optimized-spacing {
+    padding-top: 8rem; /* 32 on desktop */
+    padding-bottom: 8rem; /* 32 on desktop */
+  }
+}
+
+.mobile-optimized-gap {
+  gap: 2rem; /* 8 on mobile */
+}
+
+@media (min-width: 768px) {
+  .mobile-optimized-gap {
+    gap: 4rem; /* 16 on tablet+ */
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-optimized-gap {
+    gap: 8rem; /* 32 on desktop */
+  }
 }
 
 .container {
@@ -58,6 +102,8 @@ body {
   /* Force hardware acceleration */
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  /* Improve compositing */
+  isolation: isolate;
 }
 
 .will-change-auto {
@@ -80,6 +126,37 @@ body {
   perspective: 1000;
   /* Ensure smooth compositing */
   contain: layout style paint;
+  /* Create stacking context for better performance */
+  isolation: isolate;
+}
+
+/* Mobile performance boost */
+@media screen and (max-width: 768px) {
+  .gpu-accelerated {
+    /* Simpler transforms on mobile */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Reduce complex animations on mobile */
+  .mobile-performance * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Disable expensive effects on mobile */
+  .mobile-performance .blur-3xl,
+  .mobile-performance .blur-2xl,
+  .mobile-performance .blur-xl {
+    filter: none !important;
+  }
+  
+  .mobile-performance .backdrop-blur-sm,
+  .mobile-performance .backdrop-blur-md,
+  .mobile-performance .backdrop-blur-lg {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }
 
 /* Optimized scrolling */
