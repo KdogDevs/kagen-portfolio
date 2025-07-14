@@ -50,7 +50,7 @@ export const EnhancedBio: FC = () => {
   return (
     <section 
       ref={ref}
-      className="py-32 px-4 md:px-8 relative overflow-hidden"
+      className="py-16 md:py-32 px-4 md:px-8 relative overflow-hidden"
     >
       {/* Background effects */}
       <motion.div
@@ -70,10 +70,10 @@ export const EnhancedBio: FC = () => {
         {/* Section Header */}
         <motion.div 
           variants={itemVariants}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -91,10 +91,10 @@ export const EnhancedBio: FC = () => {
           />
         </motion.div>
 
-        {/* Bio Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
+        {/* Bio Content Grid - Optimized for mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-16 mb-8 md:mb-16">
           {/* Content Sections */}
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-12">
             {[bioContent.background, bioContent.location, bioContent.technical].map((section, index) => (
               <motion.div
                 key={section.title}
@@ -102,7 +102,7 @@ export const EnhancedBio: FC = () => {
                 className="group"
               >
                 <motion.div
-                  className="relative p-8 rounded-2xl backdrop-blur-lg
+                  className="relative p-4 md:p-8 rounded-2xl backdrop-blur-lg
                     bg-white/40 dark:bg-gray-800/40 
                     border border-white/20 dark:border-gray-700/20
                     shadow-lg hover:shadow-xl transition-all duration-500
@@ -119,31 +119,31 @@ export const EnhancedBio: FC = () => {
                   {/* Content */}
                   <div className="relative">
                     <motion.h3 
-                      className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200"
+                      className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-gray-800 dark:text-gray-200"
                       whileHover={{ color: "rgb(59, 130, 246)" }}
                       transition={{ duration: 0.3 }}
                     >
                       {section.title}
                     </motion.h3>
                     
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                       {section.description}
                     </p>
                   </div>
 
-                  {/* Floating particles on hover */}
-                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {Array.from({ length: 5 }, (_, i) => (
+                  {/* Simplified hover effects for mobile performance */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
+                    {Array.from({ length: 3 }, (_, i) => (
                       <motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-blue-400 rounded-full"
                         initial={{ 
-                          x: Math.random() * 300, 
-                          y: Math.random() * 200,
+                          x: Math.random() * 200, 
+                          y: Math.random() * 100,
                           opacity: 0 
                         }}
                         animate={{
-                          y: [Math.random() * 200, -20],
+                          y: [Math.random() * 100, -20],
                           opacity: [0, 1, 0],
                         }}
                         transition={{
@@ -159,14 +159,14 @@ export const EnhancedBio: FC = () => {
             ))}
           </div>
 
-          {/* Skills Section */}
+          {/* Skills Section - Optimized for mobile */}
           <motion.div
             variants={itemVariants}
             className="relative"
           >
-            <div className="sticky top-32">
+            <div className="lg:sticky lg:top-32">
               <motion.h3 
-                className="text-2xl font-bold mb-8 text-center lg:text-left"
+                className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center lg:text-left"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -175,7 +175,8 @@ export const EnhancedBio: FC = () => {
                 </span>
               </motion.h3>
               
-              <div className="grid grid-cols-2 gap-4">
+              {/* Mobile: 3 columns, Desktop: 2 columns */}
+              <div className="grid grid-cols-3 md:grid-cols-2 gap-3 md:gap-4">
                 {bioContent.skills.map((skill, index) => (
                   <motion.div
                     key={skill}
@@ -187,7 +188,7 @@ export const EnhancedBio: FC = () => {
                     className="group"
                   >
                     <motion.div
-                      className="relative p-6 rounded-xl backdrop-blur-lg
+                      className="relative p-3 md:p-6 rounded-xl backdrop-blur-lg
                         bg-gradient-to-br from-white/30 to-white/10 
                         dark:from-gray-800/30 dark:to-gray-800/10
                         border border-white/20 dark:border-gray-700/20
@@ -200,9 +201,9 @@ export const EnhancedBio: FC = () => {
                       }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {/* Shimmer effect */}
+                      {/* Simplified shimmer for mobile performance */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 hidden md:block"
                         initial={{ x: "-100%" }}
                         animate={{ 
                           x: inView ? ["100%", "100%", "-100%"] : "-100%" 
@@ -219,16 +220,16 @@ export const EnhancedBio: FC = () => {
                       {/* Content */}
                       <div className="relative">
                         <motion.div
-                          className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+                          className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                             flex items-center justify-center border border-blue-500/20 dark:border-blue-400/20"
                           whileHover={{ scale: 1.1 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                          <div className="w-2 h-2 md:w-3 md:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                         </motion.div>
                         
-                        <h4 className="font-semibold text-sm text-gray-800 dark:text-gray-200 
-                          group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <h4 className="font-semibold text-xs md:text-sm text-gray-800 dark:text-gray-200 
+                          group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
                           {skill}
                         </h4>
                       </div>
@@ -239,12 +240,12 @@ export const EnhancedBio: FC = () => {
 
               {/* Additional decorative elements */}
               <motion.div
-                className="mt-8 text-center"
+                className="mt-6 md:mt-8 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full 
+                <div className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full 
                   bg-gradient-to-r from-blue-500/10 to-purple-500/10 
                   border border-blue-500/20 backdrop-blur-sm">
                   <motion.div
@@ -252,7 +253,7 @@ export const EnhancedBio: FC = () => {
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                     className="w-2 h-2 bg-blue-500 rounded-full"
                   />
-                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <span className="text-xs md:text-sm font-medium text-gray-600 dark:text-gray-400">
                     Always learning, always growing
                   </span>
                 </div>
@@ -261,13 +262,13 @@ export const EnhancedBio: FC = () => {
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - Optimized spacing */}
         <motion.div
           variants={itemVariants}
           className="text-center"
         >
           <motion.p 
-            className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
@@ -276,16 +277,16 @@ export const EnhancedBio: FC = () => {
           </motion.p>
           
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
             <motion.a
               href="#projects"
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
+              className="w-full sm:w-auto px-6 md:px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
                 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300
-                hover:from-blue-700 hover:to-purple-700"
+                hover:from-blue-700 hover:to-purple-700 text-center"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -294,10 +295,10 @@ export const EnhancedBio: FC = () => {
             
             <motion.a
               href="#contact"
-              className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 
+              className="w-full sm:w-auto px-6 md:px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 
                 dark:text-gray-300 rounded-xl font-semibold hover:border-blue-500 
                 dark:hover:border-blue-400 transition-all duration-300 backdrop-blur-sm
-                bg-white/10 dark:bg-gray-900/10"
+                bg-white/10 dark:bg-gray-900/10 text-center"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
