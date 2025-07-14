@@ -52,7 +52,7 @@ export function BlockedPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-gray-50 to-orange-50 dark:from-red-900/20 dark:via-gray-900 dark:to-orange-900/20 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-gray-50 to-orange-50 dark:from-red-900/20 dark:via-gray-900 dark:to-orange-900/20 flex items-center justify-center p-4" style={{ cursor: 'auto' }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
