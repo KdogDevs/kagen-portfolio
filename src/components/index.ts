@@ -12,3 +12,4 @@ export { SEO } from './seo';
 export { ParticleBackground } from './particle-background';
 export { FloatingOrbs } from './floating-orbs';
 export { MagneticButton } from './magnetic-button';
+export { BlockedPage } from './blocked-page';
