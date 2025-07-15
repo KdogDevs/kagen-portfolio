@@ -5,19 +5,23 @@ import { GitHubIcon } from '../components/icons/GitHub';
 export const personalInfo: PersonalInfo = {
   name: "Kagen Jensen",
   title: "Electrical Engineering Student & AI Solutions Architect",
-  about: "I'm an electrical engineering student at the University of Alabama and Air Force ROTC cadet, specializing in AI prompt engineering and networking solutions.",
-  headshot: "/_PP_6585.jpg"
+  about: "I'm an electrical engineering student at the University of Alabama, specializing in AI prompt engineering and networking solutions.",
+  headshot: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/f64d6616-b729-43c5-8192-f12a4fdc6800/public",
+  extraImages: [
+    "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/f64d6616-b729-43c5-8192-f12a4fdc6800/public",
+    "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/13f2dbbb-cd34-40ac-593d-11cf2a4b6900/public"
+  ]
 };
 
 export const bioContent: BioContent = {
   title: "About Me",
   background: {
     title: "Background",
-    description: "I recently graduated from Saint Pius X Catholic High School in May 2025 and now attend the University of Alabama, where I'm majoring in electrical engineering and participating in Air Force ROTC. I enjoy creating websites and programs that make an impact on people's day-to-day lives. My journey in tech began with AI prompt engineering and has evolved into full-stack development and system architecture."
+    description: "I recently graduated from Saint Pius X Catholic High School in May 2025 and now attend the University of Alabama, where I'm majoring in electrical engineering. I enjoy creating websites and programs that make an impact on people's day-to-day lives. My journey in tech began with AI prompt engineering and has evolved into full-stack development and system architecture."
   },
   location: {
     title: "Location & Interests",
-    description: "Based in Atlanta, Georgia, I split my time between my studies at the University of Alabama, Air Force ROTC activities, and my hobby projects like building websites and applications. I'm particularly interested in AI applications, network infrastructure, and the intersection of technology with electrical engineering."
+    description: "Based in Atlanta, Georgia, I split my time between my studies at the University of Alabama and my hobby projects like building websites and applications. I'm particularly interested in AI applications, network infrastructure, and the intersection of technology with electrical engineering."
   },
   technical: {
     title: "Technical Journey",
@@ -40,7 +44,7 @@ export const projects: Project[] = [
     technologies: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
     demoLink: "https://schedulespx.com",
     githubLink: "https://github.com/KdogDevs/schedule-spx",
-    image: "/Schedulespx-immage.jpeg"
+    image: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/57e8080a-1d33-4720-e503-585d9fac9a00/public"
   },
   {
     title: "Shift 2 Stream",
@@ -48,7 +52,7 @@ export const projects: Project[] = [
     technologies: ["React", "Tailwind CSS", "Node.js", "Framer Motion"],
     demoLink: "https://www.shift2stream.com",
     githubLink: "https://github.com/KdogDevs/shift2stream-website",
-    image: "/s2s-immage.png"
+    image: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/a79a5386-0dc9-4ab6-a106-cf881bffae00/public"
   }
 ];
 
@@ -57,19 +61,19 @@ export const education: Education[] = [
     school: "University of Alabama",
     degree: "Bachelor of Science in Electrical Engineering",
     years: "2025 - Present",
-    logo: "/university-of-alabama-logo.svg",
+    logo: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/b322266a-9c3a-42b4-e29a-6797bb0cd400/public",
     achievements: [
-      "Air Force ROTC Cadet",
       "Electrical Engineering Major",
       "Technology Innovation Focus",
-      "Leadership Development Program"
+      "Leadership Development Program",
+      "Academic Excellence"
     ]
   },
   {
     school: "Saint Pius X Catholic High School",
     degree: "High School Diploma",
     years: "2021 - 2025",
-    logo: "/saint-pius-logo.svg",
+    logo: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/aa1b392b-5480-43dd-a2c0-3c5e1eb1af00/public",
     achievements: [
       "Fersatti Formation Coordinator",
       "Head of Broadcasting Department",
@@ -113,17 +117,16 @@ export const socialLinks: SocialLink[] = [
 
 export const siteMetadata = {
   title: "Kagen Jensen - Electrical Engineering Student, AI Solutions Architect & Developer Portfolio",
-  description: "Official portfolio of Kagen Jensen - University of Alabama electrical engineering student, Air Force ROTC cadet, and AI solutions architect. Showcasing innovative projects in artificial intelligence, network architecture, web development, and system design. Contact Kagen for collaboration opportunities.",
+  description: "Official portfolio of Kagen Jensen - University of Alabama electrical engineering student and AI solutions architect. Showcasing innovative projects in artificial intelligence, network architecture, web development, and system design. Contact Kagen for collaboration opportunities.",
   author: "Kagen Jensen",
   siteUrl: "https://kagen.dev",
-  socialImage: "/_PP_6585.jpg",
+  socialImage: "https://imagedelivery.net/JAQRWjwDZP50j-W_ZtafYA/f64d6616-b729-43c5-8192-f12a4fdc6800/public",
   keywords: [
     "Kagen Jensen",
     "Kagen",
     "Electrical Engineering Student",
     "AI Solutions Architect", 
     "University of Alabama",
-    "Air Force ROTC",
     "Web Developer",
     "AI Engineering",
     "Network Architecture",
