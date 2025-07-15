@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { personalInfo, socialLinks } from '../data/content';
@@ -13,25 +13,12 @@ import {
 import { MagneticButton } from './magnetic-button';
 
 export const EnhancedHero: FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const { scrollY } = useScroll();
   
   // Parallax effects - reduced for mobile performance
   const yBackground = useTransform(scrollY, [0, 500], [0, 50]);
   const yContent = useTransform(scrollY, [0, 500], [0, -25]);
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -110,17 +97,7 @@ export const EnhancedHero: FC = () => {
         </div>
       </motion.div>
 
-      {/* Interactive light - disabled on mobile for performance */}
-      <motion.div
-        className="absolute pointer-events-none hidden md:block"
-        animate={{
-          x: mousePosition.x * 30,
-          y: mousePosition.y * 30,
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 30 }}
-      >
-        <div className="w-64 h-64 bg-gradient-radial from-blue-500/8 to-transparent rounded-full blur-3xl" />
-      </motion.div>
+      {/* Interactive light - disabled for performance */}
 
       <motion.div
         variants={containerVariants}
@@ -347,29 +324,31 @@ export const EnhancedHero: FC = () => {
               }}
             />
           ))}
+          </div>
 
-          {/* Extra Images Gallery - Optimized for mobile */}
+          {/* Extra Images Gallery - Brought to front and repositioned */}
           {personalInfo.extraImages && (
-            <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 flex gap-1.5 md:gap-2">
+            <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 flex flex-col gap-2 md:gap-3 z-20">
               {personalInfo.extraImages.map((image, index) => (
                 <motion.div
                   key={index}
                   className="relative group"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.5 + index * 0.2, duration: 0.6 }}
+                  initial={{ opacity: 0, scale: 0.5, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ delay: 1.5 + index * 0.3, duration: 0.8, ease: "backOut" }}
                 >
                   <motion.img
                     src={image}
                     alt={`${personalInfo.name} - Photo ${index + 2}`}
-                    className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-cover rounded-lg md:rounded-xl shadow-lg 
-                      border-2 border-white/50 dark:border-gray-700/50 optimized-image"
+                    className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-xl md:rounded-2xl shadow-2xl 
+                      border-3 border-white/80 dark:border-gray-700/80 optimized-image backdrop-blur-sm"
                     whileHover={{ 
-                      scale: 1.1, 
-                      rotate: index % 2 === 0 ? 3 : -3,
-                      zIndex: 10
+                      scale: 1.15, 
+                      rotate: index % 2 === 0 ? 6 : -6,
+                      zIndex: 30,
+                      y: -5
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "backOut" }}
                     loading="lazy"
                     onError={(e) => {
                       // Fallback for extra images
@@ -380,15 +359,15 @@ export const EnhancedHero: FC = () => {
                       }
                     }}
                   />
+                  {/* Glowing border effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-lg md:rounded-xl 
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-xl md:rounded-2xl 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm scale-110"
                   />
                 </motion.div>
               ))}
             </div>
           )}
-          </div>
 
           {/* Simplified ambient glow effects */}
           <motion.div

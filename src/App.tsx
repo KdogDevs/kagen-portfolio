@@ -8,7 +8,7 @@ import { EnhancedEducationSection, EnhancedWorkSection } from './components/enha
 import { SEO } from './components/seo';
 import { ParticleBackground } from './components/particle-background';
 import { FloatingOrbs } from './components/floating-orbs';
-import { CustomCursor } from './components/custom-cursor';
+
 import { MagneticButton } from './components/magnetic-button';
 import { socialLinks } from './data/content';
 import { perfUtils } from './utils/performance';
@@ -37,9 +37,6 @@ function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden relative smooth-scroll mobile-performance">
       <SEO />
-      
-      {/* Custom Cursor - Only on desktop and high-power devices */}
-      {!shouldReduceMotion && !isLowPowerDevice && <CustomCursor />}
       
       {/* Background Effects - Reduced on low-power devices */}
       <ParticleBackground />

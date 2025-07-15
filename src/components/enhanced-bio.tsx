@@ -2,6 +2,12 @@ import { FC } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { bioContent } from '../data/content';
+import { AIIcon } from './icons/AIIcon';
+import { WebDevIcon } from './icons/WebDevIcon';
+import { NetworkIcon } from './icons/NetworkIcon';
+import { SystemIcon } from './icons/SystemIcon';
+import { DesignIcon } from './icons/DesignIcon';
+import { HomeLabIcon } from './icons/HomeLabIcon';
 
 export const EnhancedBio: FC = () => {
   const [ref, inView] = useInView({ 
@@ -11,6 +17,18 @@ export const EnhancedBio: FC = () => {
   const { scrollY } = useScroll();
   
   const yParallax = useTransform(scrollY, [0, 1000], [0, -100]);
+
+  // Map skills to their corresponding icons
+  const getSkillIcon = (skill: string) => {
+    const skillLower = skill.toLowerCase();
+    if (skillLower.includes('ai')) return AIIcon;
+    if (skillLower.includes('web')) return WebDevIcon;
+    if (skillLower.includes('network')) return NetworkIcon;
+    if (skillLower.includes('system') || skillLower.includes('architecture')) return SystemIcon;
+    if (skillLower.includes('design') || skillLower.includes('ui') || skillLower.includes('ux')) return DesignIcon;
+    if (skillLower.includes('home lab') || skillLower.includes('lab')) return HomeLabIcon;
+    return null; // fallback to the dot
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -177,65 +195,73 @@ export const EnhancedBio: FC = () => {
               
               {/* Mobile: 3 columns, Desktop: 2 columns */}
               <div className="grid grid-cols-3 md:grid-cols-2 gap-3 md:gap-4">
-                {bioContent.skills.map((skill, index) => (
-                  <motion.div
-                    key={skill}
-                    variants={skillVariants}
-                    custom={index}
-                    initial="hidden"
-                    animate={inView ? "visible" : "hidden"}
-                    transition={{ delay: index * 0.1 }}
-                    className="group"
-                  >
+                {bioContent.skills.map((skill, index) => {
+                  const IconComponent = getSkillIcon(skill);
+                  
+                  return (
                     <motion.div
-                      className="relative p-3 md:p-6 rounded-xl backdrop-blur-lg
-                        bg-gradient-to-br from-white/30 to-white/10 
-                        dark:from-gray-800/30 dark:to-gray-800/10
-                        border border-white/20 dark:border-gray-700/20
-                        shadow-md hover:shadow-lg transition-all duration-300
-                        text-center cursor-pointer overflow-hidden"
-                      whileHover={{ 
-                        scale: 1.05, 
-                        y: -5,
-                        boxShadow: "0 10px 25px rgba(59, 130, 246, 0.15)"
-                      }}
-                      whileTap={{ scale: 0.95 }}
+                      key={skill}
+                      variants={skillVariants}
+                      custom={index}
+                      initial="hidden"
+                      animate={inView ? "visible" : "hidden"}
+                      transition={{ delay: index * 0.1 }}
+                      className="group"
                     >
-                      {/* Simplified shimmer for mobile performance */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 hidden md:block"
-                        initial={{ x: "-100%" }}
-                        animate={{ 
-                          x: inView ? ["100%", "100%", "-100%"] : "-100%" 
+                        className="relative p-3 md:p-6 rounded-xl backdrop-blur-lg
+                          bg-gradient-to-br from-white/30 to-white/10 
+                          dark:from-gray-800/30 dark:to-gray-800/10
+                          border border-white/20 dark:border-gray-700/20
+                          shadow-md hover:shadow-lg transition-all duration-300
+                          text-center cursor-pointer overflow-hidden"
+                        whileHover={{ 
+                          scale: 1.05, 
+                          y: -5,
+                          boxShadow: "0 10px 25px rgba(59, 130, 246, 0.15)"
                         }}
-                        transition={{ 
-                          duration: 2, 
-                          delay: index * 0.2 + 1,
-                          repeat: Infinity,
-                          repeatDelay: 5,
-                          ease: "easeInOut" 
-                        }}
-                      />
-                      
-                      {/* Content */}
-                      <div className="relative">
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {/* Simplified shimmer for mobile performance */}
                         <motion.div
-                          className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 
-                            flex items-center justify-center border border-blue-500/20 dark:border-blue-400/20"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="w-2 h-2 md:w-3 md:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
-                        </motion.div>
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 hidden md:block"
+                          initial={{ x: "-100%" }}
+                          animate={{ 
+                            x: inView ? ["100%", "100%", "-100%"] : "-100%" 
+                          }}
+                          transition={{ 
+                            duration: 2, 
+                            delay: index * 0.2 + 1,
+                            repeat: Infinity,
+                            repeatDelay: 5,
+                            ease: "easeInOut" 
+                          }}
+                        />
                         
-                        <h4 className="font-semibold text-xs md:text-sm text-gray-800 dark:text-gray-200 
-                          group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
-                          {skill}
-                        </h4>
-                      </div>
+                        {/* Content */}
+                        <div className="relative">
+                          <motion.div
+                            className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+                              flex items-center justify-center border border-blue-500/20 dark:border-blue-400/20"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {IconComponent ? (
+                              <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-blue-600 dark:text-blue-400" />
+                            ) : (
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                            )}
+                          </motion.div>
+                          
+                          <h4 className="font-semibold text-xs md:text-sm text-gray-800 dark:text-gray-200 
+                            group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
+                            {skill}
+                          </h4>
+                        </div>
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Additional decorative elements */}
