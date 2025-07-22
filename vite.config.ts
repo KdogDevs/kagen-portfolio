@@ -21,8 +21,16 @@ export default defineConfig({
     },
   },
   build: {
+    // Target modern browsers (ES2022)
+    target: 'es2022',
     // Enable minification for better performance
     minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     // Optimize chunk size
     rollupOptions: {
       output: {
@@ -30,13 +38,16 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           motion: ['framer-motion'],
           ui: ['@heroicons/react', '@radix-ui/react-icons'],
+          query: ['@tanstack/react-query'],
         },
       },
     },
-    // Target modern browsers for better performance
-    target: 'esnext',
-    // Enable source maps for debugging
+    // Enable source maps for debugging only in dev
     sourcemap: false,
+    // Preload CSS
+    cssCodeSplit: false,
+    // Asset optimization
+    assetsInlineLimit: 4096,
   },
   server: {
     // Enable hot module replacement
@@ -52,6 +63,11 @@ export default defineConfig({
       'framer-motion',
       '@heroicons/react/24/outline',
       '@radix-ui/react-icons',
+      '@tanstack/react-query',
     ],
+  },
+  // Enable modern CSS features
+  css: {
+    devSourcemap: true,
   },
 });
