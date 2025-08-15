@@ -14,7 +14,6 @@ import { AppleFooter } from '@/components/apple/AppleFooter';
 // Background and effects
 import { AppleBackground } from '@/components/apple/AppleBackground';
 import { SEO } from '@/components/seo';
-import './index.css';
 
 // Query client for data fetching
 const queryClient = new QueryClient({
@@ -38,7 +37,7 @@ const pageVariants = {
   },
 };
 
-function App() {
+export default function HomePage() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -86,5 +85,3 @@ function App() {
     </QueryClientProvider>
   );
 }
-
-export default App;

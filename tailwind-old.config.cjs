@@ -106,6 +106,7 @@ module.exports = {
       perspective: {
         '1000': '1000px',
       },
+      },
       backdropBlur: {
         'xs': '2px',
         'glass': '20px',
@@ -117,5 +118,67 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        // Glass morphism utilities
+        '.glass-sm': {
+          'backdrop-filter': 'blur(8px) saturate(150%)',
+          'background-color': 'rgba(255, 255, 255, 0.1)',
+          'border': '1px solid rgba(255, 255, 255, 0.2)',
+        },
+        '.glass-md': {
+          'backdrop-filter': 'blur(16px) saturate(150%)',
+          'background-color': 'rgba(255, 255, 255, 0.15)',
+          'border': '1px solid rgba(255, 255, 255, 0.25)',
+        },
+        '.glass-lg': {
+          'backdrop-filter': 'blur(24px) saturate(150%)',
+          'background-color': 'rgba(255, 255, 255, 0.2)',
+          'border': '1px solid rgba(255, 255, 255, 0.3)',
+        },
+        '.glass-xl': {
+          'backdrop-filter': 'blur(32px) saturate(150%)',
+          'background-color': 'rgba(255, 255, 255, 0.25)',
+          'border': '1px solid rgba(255, 255, 255, 0.35)',
+        },
+        // Dark mode glass variants
+        '.dark .glass-sm': {
+          'background-color': 'rgba(255, 255, 255, 0.08)',
+          'border': '1px solid rgba(255, 255, 255, 0.15)',
+        },
+        '.dark .glass-md': {
+          'background-color': 'rgba(255, 255, 255, 0.12)',
+          'border': '1px solid rgba(255, 255, 255, 0.2)',
+        },
+        '.dark .glass-lg': {
+          'background-color': 'rgba(255, 255, 255, 0.16)',
+          'border': '1px solid rgba(255, 255, 255, 0.25)',
+        },
+        '.dark .glass-xl': {
+          'background-color': 'rgba(255, 255, 255, 0.2)',
+          'border': '1px solid rgba(255, 255, 255, 0.3)',
+        },
+        // Apple-style transitions
+        '.apple-transition': {
+          'transition': 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        },
+        '.apple-transition-fast': {
+          'transition': 'all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        },
+        '.apple-transition-slow': {
+          'transition': 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        },
+        // Performance optimizations
+        '.gpu-accelerated': {
+          'transform': 'translateZ(0)',
+          'will-change': 'transform',
+        },
+        '.contain-layout': {
+          'contain': 'layout style paint',
+        },
+      };
+      addUtilities(newUtilities);
+    }
+  ],
 }

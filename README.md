@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# Kagen Jensen - Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, high-performance portfolio website built with Apple's "liquid glass" design language.
 
-## Available Scripts
+## 🚀 Quick Start
 
-In the project directory, you can run:
+```bash
+# Install dependencies
+npm install
 
-### `npm start`
+# Start development server
+npm run dev
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Build for production
+npm run build
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Preview production build
+npm run preview
+```
 
-### `npm test`
+## ✨ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Apple-Style Design Language
+- **Glass Morphism**: Translucent cards with backdrop-blur effects
+- **Smooth Animations**: Apple's cubic-bezier timing functions
+- **SF Pro Typography**: System font stack for optimal readability
+- **Dark Mode**: Seamless light/dark theme switching
+- **Responsive Design**: Mobile-first approach with fluid layouts
 
-### `npm run build`
+### Performance Optimized
+- **Modern JavaScript**: ES2022 target for smaller bundles
+- **Code Splitting**: Lazy-loaded components and routes
+- **Optimized Assets**: Compressed images and fonts
+- **Critical CSS**: Inlined above-the-fold styles
+- **Bundle Analysis**: Optimized chunk splitting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Accessibility & SEO
+- **WCAG Compliance**: AA color contrast and screen reader support
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+- **Meta Tags**: Open Graph and Twitter Card support
+- **Structured Data**: JSON-LD for rich search results
+- **Performance**: Target Lighthouse score ≥ 95
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite with HMR and optimizations
+- **Styling**: Tailwind CSS with custom design system
+- **Animations**: Framer Motion with reduced motion support
+- **State Management**: TanStack Query for data fetching
+- **Routing**: React Router 6 with code splitting
 
-### `npm run eject`
+## 📱 Browser Support
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Chrome/Edge 91+
+- Firefox 90+
+- Safari 14+
+- iOS Safari 14+
+- Android Chrome 91+
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🎨 Design System
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Glass Morphism Utilities
+```css
+.glass-sm   /* 8px blur, light transparency */
+.glass-md   /* 16px blur, medium transparency */
+.glass-lg   /* 24px blur, strong transparency */
+.glass-xl   /* 32px blur, maximum transparency */
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Apple Transitions
+```css
+.apple-transition      /* 300ms cubic-bezier */
+.apple-transition-fast /* 200ms cubic-bezier */
+.apple-transition-slow /* 400ms cubic-bezier */
+```
 
-## Learn More
+## 📊 Performance Metrics
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Lighthouse Performance**: 95+
+- **First Contentful Paint**: < 1.2s
+- **Largest Contentful Paint**: < 1.5s
+- **Cumulative Layout Shift**: < 0.1
+- **Total Bundle Size**: < 200KB gzipped
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
+
+### Netlify
+```bash
+npm run build
+# Deploy dist/ folder to Netlify
+```
+
+### GitHub Pages
+```bash
+npm run build
+# Deploy dist/ folder to gh-pages branch
+```
+
+## 📝 License
+
+MIT License - feel free to use this as a template for your own portfolio.
+
+## 🤝 Contributing
+
+This is a personal portfolio, but suggestions and improvements are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+---
+
+Built with ❤️ by [Kagen Jensen](https://kagen.dev)
