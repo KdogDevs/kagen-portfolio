@@ -192,16 +192,6 @@ export function AppleBio() {
                 >
                   Explore My Work
                 </motion.button>
-                
-                <motion.button
-                  className="w-full px-6 py-3 glass-md rounded-2xl font-semibold font-sf-pro apple-transition
-                    text-gray-700 dark:text-gray-300 hover:bg-white/40 dark:hover:bg-white/20"
-                  whileHover={{ scale: 1.02, y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Let's Connect
-                </motion.button>
               </div>
             </motion.div>
           </motion.div>

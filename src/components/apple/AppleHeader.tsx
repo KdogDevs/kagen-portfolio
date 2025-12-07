@@ -35,7 +35,6 @@ export function AppleHeader() {
   const navItems = [
     { label: 'Projects', href: '#projects', icon: CodeBracketIcon },
     { label: 'Experience', href: '#experience', icon: AcademicCapIcon },
-    { label: 'Contact', href: '#contact', icon: EnvelopeIcon },
   ];
 
   return (
