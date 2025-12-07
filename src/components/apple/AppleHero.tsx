@@ -114,16 +114,6 @@ export function AppleHero() {
                   <ArrowDownIcon className="w-4 h-4 rotate-90" />
                 </span>
               </motion.button>
-              
-              <motion.button
-                className="px-8 py-4 glass-md rounded-2xl font-semibold font-sf-pro apple-transition
-                  text-gray-700 dark:text-gray-300 hover:bg-white/40 dark:hover:bg-white/20"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Get In Touch
-              </motion.button>
             </motion.div>
 
             {/* Social Links */}
@@ -131,7 +121,7 @@ export function AppleHero() {
               variants={itemVariants}
               className="flex gap-4 justify-center lg:justify-start"
             >
-              {socialLinks.map((link, index) => (
+              {socialLinks.filter(link => link.platform === 'github').map((link, index) => (
                 <motion.a
                   key={link.platform}
                   href={link.url}
@@ -181,25 +171,6 @@ export function AppleHero() {
                 transition={{ duration: 0.3 }}
                 loading="eager"
               />
-
-              {/* Floating additional images */}
-              {personalInfo.extraImages && (
-                <div className="absolute -top-6 -left-6 flex flex-col gap-3">
-                  {personalInfo.extraImages.slice(0, 2).map((image, index) => (
-                    <motion.img
-                      key={index}
-                      src={image}
-                      alt={`${personalInfo.name} - Photo ${index + 2}`}
-                      className="w-20 h-20 object-cover rounded-2xl shadow-xl glass-sm"
-                      whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 5 : -5 }}
-                      initial={{ opacity: 0, scale: 0.5, x: -20 }}
-                      animate={{ opacity: 1, scale: 1, x: 0 }}
-                      transition={{ delay: 1.2 + index * 0.2, duration: 0.6 }}
-                      loading="lazy"
-                    />
-                  ))}
-                </div>
-              )}
             </div>
           </motion.div>
         </motion.div>

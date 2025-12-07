@@ -45,7 +45,7 @@ export function AppleFooter() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            {socialLinks.map((link, index) => (
+            {socialLinks.filter(link => link.platform === 'github').map((link, index) => (
               <motion.a
                 key={link.platform}
                 href={link.url}
