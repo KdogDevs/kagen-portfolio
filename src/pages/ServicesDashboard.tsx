@@ -12,7 +12,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 // Simple password authentication - in production, use proper backend authentication
-const DASHBOARD_PASSWORD = 'kagen2024'; // This should be in environment variables
+// Password should be set in environment variable VITE_DASHBOARD_PASSWORD
+const DASHBOARD_PASSWORD = import.meta.env.VITE_DASHBOARD_PASSWORD || 'kagen2024';
 
 interface ServiceLink {
   name: string;
@@ -34,7 +35,7 @@ const services: ServiceLink[] = [
     icon: ChartBarIcon,
     credentials: {
       username: 'admin',
-      notes: 'Use family password for access'
+      notes: 'Contact family for password access'
     }
   },
   {
@@ -59,6 +60,9 @@ export default function ServicesDashboard() {
   const [showCredentials, setShowCredentials] = useState<{[key: string]: boolean}>({});
 
   // Check if already authenticated in session
+  // NOTE: Session storage can be manipulated in browser dev tools.
+  // For production, consider implementing proper token-based authentication
+  // with backend validation or a more secure authentication service.
   useEffect(() => {
     const authenticated = sessionStorage.getItem('services_authenticated');
     if (authenticated === 'true') {
@@ -252,6 +256,8 @@ export default function ServicesDashboard() {
               src="https://status.kagen.dev/status/services"
               className="w-full h-full rounded-xl"
               title="Uptime Kuma Status"
+              sandbox="allow-scripts allow-same-origin"
+              referrerPolicy="no-referrer"
               style={{ border: 'none' }}
             />
           </div>
