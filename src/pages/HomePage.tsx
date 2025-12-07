@@ -8,7 +8,6 @@ import { AppleHero } from '@/components/apple/AppleHero';
 import { AppleBio } from '@/components/apple/AppleBio';
 import { AppleProjects } from '@/components/apple/AppleProjects';
 import { AppleExperience } from '@/components/apple/AppleExperience';
-import { AppleContact } from '@/components/apple/AppleContact';
 import { AppleFooter } from '@/components/apple/AppleFooter';
 
 // Background and effects
@@ -72,10 +71,6 @@ export default function HomePage() {
             
             <Suspense fallback={<div className="h-96" />}>
               <AppleExperience />
-            </Suspense>
-            
-            <Suspense fallback={<div className="h-96" />}>
-              <AppleContact />
             </Suspense>
           </main>
           
